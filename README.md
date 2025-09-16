@@ -183,11 +183,15 @@ endmodule
 ```
 
 Output waveform:***Dflipflop***
-<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/381856ee-0288-4f25-a1ad-073a8741fc7b" />
+<img width="1508" height="896" alt="image" src="https://github.com/user-attachments/assets/28e02c7d-b459-4a7e-adb2-b8ab47af22d7" />
+
 ***SRflipflop***
 <img width="1358" height="807" alt="image" src="https://github.com/user-attachments/assets/f7397cf2-b315-4ecc-ac5c-79c6ccd51341" />
 ***JKflipflop***
-<img width="1525" height="392" alt="image" src="https://github.com/user-attachments/assets/a6ed4ad2-9ea7-465a-91b3-578387710a68" />
+<img width="1520" height="897" alt="image" src="https://github.com/user-attachments/assets/54777b0d-b624-4891-85b3-bbc36a1d906d" />
+***Tflipflop***
+<img width="1034" height="614" alt="image" src="https://github.com/user-attachments/assets/161f58ba-6937-432f-a794-1c9989b44863" />
+
 
 
 
