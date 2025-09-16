@@ -40,7 +40,7 @@ T FF
 
 
 RTL Code:
-***dflipflop***
+***Dflipflop***
 ```
 module dff ( clk, rst,d, q);
 input clk,rst,d;
@@ -55,7 +55,7 @@ endmodule
 ```
 
 TestBench:
-***dflipflop***
+***Dflipflop***
 ```
 module dff_tb;
     reg clk_t, rst_t, d_t;
@@ -73,7 +73,7 @@ end
      always #10 clk_t = ~clk_t;
 endmodule
 ```
-Output waveform:
+Output waveform:***Dflipflop***
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/381856ee-0288-4f25-a1ad-073a8741fc7b" />
 
 
