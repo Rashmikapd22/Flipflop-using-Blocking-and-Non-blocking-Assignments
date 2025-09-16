@@ -53,6 +53,50 @@ output reg q;
     end
 endmodule
 ```
+***SRflipflop***
+```
+module sr_ff (input clk,input S,input R,output reg Q);
+always @(posedge clk)
+begin
+case ({S,R})
+2'b00: Q <= Q;
+2'b01: Q <= 0;
+2'b10: Q <= 1;
+2'b11: Q <= 1'bx;
+endcase
+end
+endmodule
+```
+***JKflipflop***
+```
+module jk_ff(input clk,J,K, output reg Q);
+always @(posedge clk) begin
+case({J,K})
+2'b00: Q<=Q;
+2'b01: Q<=0;
+2'b10: Q<=1;
+2'b11: Q<=~Q;
+endcase
+end
+endmodule
+```
+***Tflipflop***
+```
+module t_ff(clk,rst,Tout,T);
+input clk,rst,T;
+output reg Tout;
+always@ (posedge clk)
+begin
+if(rst)
+Tout = 1'b0;
+else if(T)
+Tout = ~Tout;
+else
+Tout = Tout;
+end
+endmodule
+```
+
 
 TestBench:
 ***Dflipflop***
@@ -73,10 +117,82 @@ end
      always #10 clk_t = ~clk_t;
 endmodule
 ```
+***SRflipflop***
+```
+module sr_ff_tb;
+reg clk, S, R;
+wire Q;
+sr_ff uut (.clk(clk),.S(S),.R(R),.Q(Q));
+initial begin
+clk = 0;
+forever #10 clk = ~clk;
+end
+initial begin
+S = 0; R = 0;
+#100 S = 1; R = 0;
+#100 S = 0; R = 0;
+#100 S = 0; R = 1;
+#100 S = 1; R = 1;
+#100 S = 0; R = 0;
+end
+endmodule
+```
+***JKflipflop***
+```
+module tb_jk_ff;
+reg clk;
+reg J, K;
+wire Q;
+jk_ff uut (.clk(clk),.J(J),.K(K),.Q(Q));
+initial begin
+clk=0;
+forever #20 clk=~clk;
+end
+initial begin
+J = 0; K = 0;
+#100 J=0; K=0;
+#100 J=0; K=1;
+#100 J=1; K=0;
+#100 J=1; K=1;
+#100 J=0; K=1;
+#100 J=1; K=0;
+#100 J=1; K=1;
+end
+endmodule
+```
+***Tflipflop***
+```
+module t_ff_tb;
+reg clk, rst, T;
+wire Tout;
+t_ff uut (.clk(clk),.rst(rst),.T(T),.Tout(Tout));
+initial begin
+clk = 0;
+forever #10 clk = ~clk;
+end
+initial begin
+rst = 1; T = 0;
+#20 rst = 0;
+#20 T = 1;
+#20 T = 0;
+#20 T = 1;
+#20 T = 1;
+#20 T = 0;
+end
+endmodule
+```
+
 Output waveform:***Dflipflop***
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/381856ee-0288-4f25-a1ad-073a8741fc7b" />
+***SRflipflop***
+<img width="1358" height="807" alt="image" src="https://github.com/user-attachments/assets/f7397cf2-b315-4ecc-ac5c-79c6ccd51341" />
+***JKflipflop***
+<img width="1525" height="392" alt="image" src="https://github.com/user-attachments/assets/a6ed4ad2-9ea7-465a-91b3-578387710a68" />
+
+
 
 
 Conclusion:
+In this record, I successfully designed and simulated different types of flip-flops (SR, D, JK, and T) using Verilog HDL in Vivado. The implementation helped me understand the working principles, timing behavior, and applications of sequential circuits. By writing codes and verifying outputs through simulation waveforms, I gained practical knowledge of how flip-flops form the basic building blocks of registers, counters, and other memory elements in digital systems
 
 
